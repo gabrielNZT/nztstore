@@ -1,0 +1,1 @@
+export const replaceDotWithComma = (value) => value.replace(".", ",");

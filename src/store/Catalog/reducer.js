@@ -1,8 +1,12 @@
-import { GET_CATALOG_PRODUCTS, GET_CATALOG_PRODUCTS_FAILED, GET_CATALOG_PRODUCTS_SUCCESS } from "../actionTypes"
+
+import { GET_CATALOG_PRODUCTS, GET_CATALOG_PRODUCTS_FAILED, GET_CATALOG_PRODUCTS_SUCCESS, SET_CATEGORY } from "../actionTypes"
 
 const INITIAL_STATE = {
-    products: {},
-    loadingFetchProducts: false
+    products: [],
+    filteredProducts: [],
+    categorySelected: "Todos",
+    loadingFetchProducts: false,
+    filter: ""
 }
 
 export function catalog(state = INITIAL_STATE, action) {
@@ -18,6 +22,7 @@ export function catalog(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 products: action.data,
+                filteredProducts: action.data,
                 loadingFetchProducts: false
             }
 
@@ -25,6 +30,14 @@ export function catalog(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 loadingFetchProducts: false
+            }
+
+        case SET_CATEGORY:
+            const { category } = action;
+            return {
+                ...state,
+                categorySelected: category,
+                filteredProducts: category ? state.products.filter(product => product.category === category) : state.products
             }
 
         default:

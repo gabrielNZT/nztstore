@@ -1,0 +1,14 @@
+.product-card:hover {
+    top: -2px;
+    border-bottom: 2px solid #999;
+}
+
+.items-category {
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.items-category:hover {
+    top: -2px;
+    border-bottom: 2px solid #000;
+}

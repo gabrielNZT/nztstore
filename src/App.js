@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from './store/Catalog/actions';
 import { isEmptyObject } from './utils/validations';
 import HeaderStore from './components/Header';
+import { ContentCards, Rodape } from './components';
 
 function App() {
 
@@ -18,7 +19,10 @@ function App() {
   }, [])
 
   return (
+    <>
     <HeaderStore/>
+    <ContentCards/>
+    </>
   );
 }
 
