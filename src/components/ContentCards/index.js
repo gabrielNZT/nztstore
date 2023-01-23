@@ -1,15 +1,20 @@
+import { Spin } from "antd";
+import { useSelector } from "react-redux";
 import { ProductCard, SelectFilter } from "../index";
 
 function ContentCards({ filteredProducts, filter }) {
+    const loadingFetchProducts = useSelector(state => state.loadingFetchProducts);
+
     return (
         <>
+            <Spin className="spin-objects" spinning={loadingFetchProducts} size={"large"} />
             <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
                 <div style={{ width: "75%" }}>
                     <SelectFilter filter={filter} />
                 </div>
             </div>
-            <div style={{ width: "100%", height: "70vh", display: "flex", justifyContent: "center", marginTop: "40px" }}>
-                <div style={{ width: "75%", height: "50vh", display: "flex", gap: "45px", flexWrap: "wrap" }}>
+            <div  className="contet-group-cards" >
+                <div className="content-cards">
                     {filteredProducts.map((product, index) => <ProductCard
                         product={product}
                         key={index}
@@ -17,6 +22,7 @@ function ContentCards({ filteredProducts, filter }) {
                     />)}
                 </div>
             </div>
+
         </>
     )
 }

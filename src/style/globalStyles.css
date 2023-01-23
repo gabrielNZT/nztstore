@@ -25,3 +25,46 @@
 .ant-select-item-option-selected {
     background-color: #A9A9A9 !important;
 }
+
+.ant-btn-default {
+    color: white !important;
+    background-color: #000 !important;
+}
+
+.ant-btn-default:hover {
+    border: 1px solid red !important;
+}
+
+.spin-objects {
+    z-index: 3;
+    position: absolute;
+    top: 500px;
+    left: 50%;
+
+}
+
+.ant-spin-dot-item {
+    background-color: #000 !important;
+}
+
+.content-cards {
+    width: 75%;
+    height: 50vh;
+    display: flex;
+    gap: 45px;
+    flex-wrap: wrap;
+}
+
+.contet-group-cards {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    transition: 0.2s;
+}
+
+.ant-card-cover {
+    display: flex !important;
+    justify-content: center;
+}

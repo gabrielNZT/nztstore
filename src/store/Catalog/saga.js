@@ -9,7 +9,6 @@ function* getProducts(){
         yield put(getProductsSuccess(data));
     } catch (e) {
         yield put(getProductsFailed());
-        console.log(e);
     }
 }
 
