@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import logo from "../../assets/Screenshot_2.png"
 import { selectCategory } from "../../store/Catalog/actions";
 import { CATEGORY_MEN_LABEL, CATEGORY_WOMEN_LABEL, CATEGORY_JEWELRY_LABEL, CATEGORY_ELETRONICS_LABEL, CATEGORY_ALL_LABEL } from "../messages"
@@ -8,11 +8,9 @@ const ITEMS_CATEGORY = [
     { label: CATEGORY_WOMEN_LABEL, type: "women's clothing" },
     { label: CATEGORY_JEWELRY_LABEL, type: "jewelery" },
     { label: CATEGORY_ELETRONICS_LABEL, type: "electronics" },
-    { label: CATEGORY_ALL_LABEL}]
+    { label: CATEGORY_ALL_LABEL, type: "Todos" }]
 
-function HeaderStore() {
-    const categorySelected = useSelector(state => state.categorySelected);
-
+function HeaderStore({ categorySelected }) {
     const dispatch = useDispatch();
     const handleClickCategory = (category) => dispatch(selectCategory(category))
 

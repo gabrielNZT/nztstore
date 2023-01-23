@@ -1,21 +1,19 @@
-import { useSelector } from "react-redux";
-import { ProductCard } from "../index";
-import { replaceDotWithComma } from "../../utils/dataFormater";
+import { ProductCard, SelectFilter } from "../index";
 
-function ContentCards() {
-    const filteredProducts = useSelector(state => state.filteredProducts);
-
+function ContentCards({ filteredProducts, filter }) {
     return (
         <>
+            <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
+                <div style={{ width: "75%" }}>
+                    <SelectFilter filter={filter} />
+                </div>
+            </div>
             <div style={{ width: "100%", height: "70vh", display: "flex", justifyContent: "center", marginTop: "40px" }}>
                 <div style={{ width: "75%", height: "50vh", display: "flex", gap: "45px", flexWrap: "wrap" }}>
                     {filteredProducts.map((product, index) => <ProductCard
-                        key={index} alt={`productPhoto-${index}`}
-                        title={product.title}
-                        description={replaceDotWithComma(product.price.toString())}
-                        src={product.image}
-                        rate={product.rating.rate}
-                        count={product.rating.count}
+                        product={product}
+                        key={index}
+                        alt={`productPhoto-${index}`}
                     />)}
                 </div>
             </div>

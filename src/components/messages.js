@@ -10,3 +10,7 @@ export const CATEGORY_JEWELRY_LABEL = "Jóias";
 export const CATEGORY_ELETRONICS_LABEL = "Eletrônicos";
 export const CATEGORY_ALL_LABEL = "Todos"; 
 export const PLACEHOLDER_SELECT_FILTER = "Filtros";
+export const FILTER_MOST_AVALIATION_LABEL = "Mais Avaliados";
+export const FILTER_UP_PRICE_LABEL = "Preço crescente";
+export const FILTER_DOWN_PRICE_LABEL = "Preço decrescente";
+export const FILTER_NONE_LABEL = "Sem Filtros";
