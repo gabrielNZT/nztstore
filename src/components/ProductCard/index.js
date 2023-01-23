@@ -10,7 +10,7 @@ function ProductCard({ alt, product }) {
     const { rate, count } = rating;
 
     const dispatch = useDispatch();
-    
+
     return (
         <Card
             onClick={() => dispatch(openModal(product))}

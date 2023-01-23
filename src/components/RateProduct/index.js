@@ -4,7 +4,7 @@ function RateProduct({ rate, count }) {
     return (
         <div>
             <Rate disabled defaultValue={rate} />
-            <span style={{marginLeft: "10px"}}>{`(${count})`}</span>
+            <span style={{ marginLeft: "10px" }}>{`(${count})`}</span>
         </div>
     )
 }
