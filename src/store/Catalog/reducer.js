@@ -35,11 +35,9 @@ export function catalog(state = INITIAL_STATE, action) {
             }
 
         case SET_CATEGORY:
-            const { category } = action;
             return {
                 ...state,
-                categorySelected: category,
-                filteredProducts: category !== "Todos" ? state.products.filter(product => product.category === category) : state.products,
+                categorySelected: action.category,
                 filter: "none"
             }
 

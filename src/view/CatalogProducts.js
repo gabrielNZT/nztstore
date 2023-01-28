@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ContentCards, HeaderStore, ModalDetails } from "../components";
 import { getProducts, setOrdenation } from "../store/Catalog/actions";
@@ -11,6 +11,7 @@ function CatalogProduct() {
     const filter = useSelector(state => state.filter);
     const categorySelected = useSelector(state => state.categorySelected);
     const products = useSelector(state => state.products);
+    const cloneProdutcs = useMemo(() => JSON.parse(JSON.stringify(products)), [products]);
 
 
     const dispatch = useDispatch();
@@ -29,8 +30,9 @@ function CatalogProduct() {
     }
 
     useEffect(() => {
-        const productsPerCategory = categorySelected === "Todos" ? products : products.filter(product => product.category === categorySelected);
+        const productsPerCategory = categorySelected === "Todos" ? cloneProdutcs : cloneProdutcs.filter(product => product.category === categorySelected);
         const productsWithFilter = filter !== "none" ? handleFilters(filter, productsPerCategory) : productsPerCategory;
+        console.log(cloneProdutcs)
         dispatch(setOrdenation(productsWithFilter));
     }, [filter, categorySelected]);
 
