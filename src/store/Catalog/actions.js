@@ -1,4 +1,4 @@
-import { CLOSE_MODAL, GET_CATALOG_PRODUCTS, GET_CATALOG_PRODUCTS_FAILED, GET_CATALOG_PRODUCTS_SUCCESS, OPEN_MODAL, SET_CATEGORY, SET_FILTER } from "../actionTypes";
+import { CLOSE_MODAL, GET_CATALOG_PRODUCTS, GET_CATALOG_PRODUCTS_FAILED, GET_CATALOG_PRODUCTS_SUCCESS, OPEN_MODAL, SET_CATEGORY, SET_FILTER, SET_ORDENATION } from "../actionTypes";
 
 export function getProducts() {
     return {
@@ -30,6 +30,13 @@ export function setFilter(filter) {
     return {
         type: SET_FILTER,
         filter
+    }
+}
+
+export function setOrdenation(products){
+    return {
+        type: SET_ORDENATION,
+        products
     }
 }
 

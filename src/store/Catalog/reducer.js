@@ -1,6 +1,5 @@
 
-import { descendingPrice, growingPrice, mostAvaliation } from "../../utils/ordenation"
-import { CLOSE_MODAL, GET_CATALOG_PRODUCTS, GET_CATALOG_PRODUCTS_FAILED, GET_CATALOG_PRODUCTS_SUCCESS, OPEN_MODAL, SET_CATEGORY, SET_FILTER } from "../actionTypes"
+import { CLOSE_MODAL, GET_CATALOG_PRODUCTS, GET_CATALOG_PRODUCTS_FAILED, GET_CATALOG_PRODUCTS_SUCCESS, OPEN_MODAL, SET_CATEGORY, SET_FILTER, SET_ORDENATION } from "../actionTypes"
 
 const INITIAL_STATE = {
     products: [],
@@ -45,12 +44,15 @@ export function catalog(state = INITIAL_STATE, action) {
             }
 
         case SET_FILTER:
-            const productsPerCategory = state.categorySelected === "Todos" ? state.products : state.products.filter(product => product.category === state.categorySelected);
-            const productsWithFilter = action.filter ? handleFilters(action.filter, productsPerCategory) : productsPerCategory;
             return {
                 ...state,
-                filteredProducts: productsWithFilter,
                 filter: action.filter
+            }
+
+        case SET_ORDENATION:
+            return {
+                ...state,
+                filteredProducts: action.products
             }
 
         case CLOSE_MODAL:
@@ -69,18 +71,5 @@ export function catalog(state = INITIAL_STATE, action) {
 
         default:
             return state
-    }
-}
-
-function handleFilters(filter, filteredProducts) {
-    switch (filter) {
-        case "mostAvaliation":
-            return filteredProducts.sort(mostAvaliation)
-        case "growingPrice":
-            return filteredProducts.sort(growingPrice)
-        case "descendingPrice":
-            return filteredProducts.sort(descendingPrice)
-        default:
-            return filteredProducts
     }
 }

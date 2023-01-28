@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ContentCards, HeaderStore, ModalDetails } from "../components";
-import { getProducts } from "../store/Catalog/actions";
+import { getProducts, setOrdenation } from "../store/Catalog/actions";
+import { descendingPrice, growingPrice, mostAvaliation } from "../utils/ordenation";
 import { isEmptyArray } from "../utils/validations";
 
 function CatalogProduct() {
@@ -13,12 +15,31 @@ function CatalogProduct() {
 
     const dispatch = useDispatch();
 
+    function handleFilters(filter, filteredProducts) {
+        switch (filter) {
+            case "mostAvaliation":
+                return filteredProducts.sort(mostAvaliation)
+            case "growingPrice":
+                return filteredProducts.sort(growingPrice)
+            case "descendingPrice":
+                return filteredProducts.sort(descendingPrice)
+            default:
+                return filteredProducts
+        }
+    }
+
+    useEffect(() => {
+        const productsPerCategory = categorySelected === "Todos" ? products : products.filter(product => product.category === categorySelected);
+        const productsWithFilter = filter !== "none" ? handleFilters(filter, productsPerCategory) : productsPerCategory;
+        dispatch(setOrdenation(productsWithFilter));
+    }, [filter, categorySelected]);
+
     useEffect(() => {
         if (isEmptyArray(products)) {
             dispatch(getProducts());
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, []);
 
     return (
         <>

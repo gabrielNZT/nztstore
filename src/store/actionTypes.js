@@ -5,3 +5,4 @@ export const SET_CATEGORY = "SET_CATEGORY";
 export const SET_FILTER = "SET_FILTER";
 export const OPEN_MODAL = "OPEN_MODAL";
 export const CLOSE_MODAL = "CLOSE_MODAL";
+export const SET_ORDENATION = "SET_ORDENATION";
