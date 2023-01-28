@@ -13,7 +13,6 @@ function CatalogProduct() {
     const products = useSelector(state => state.products);
     const cloneProdutcs = useMemo(() => JSON.parse(JSON.stringify(products)), [products]);
 
-
     const dispatch = useDispatch();
 
     function handleFilters(filter, filteredProducts) {
@@ -32,7 +31,6 @@ function CatalogProduct() {
     useEffect(() => {
         const productsPerCategory = categorySelected === "Todos" ? cloneProdutcs : cloneProdutcs.filter(product => product.category === categorySelected);
         const productsWithFilter = filter !== "none" ? handleFilters(filter, productsPerCategory) : productsPerCategory;
-        console.log(cloneProdutcs)
         dispatch(setOrdenation(productsWithFilter));
     }, [filter, categorySelected]);
 
